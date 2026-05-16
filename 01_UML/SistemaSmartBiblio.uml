@@ -1,0 +1,38 @@
+'Terminar em outro momento'
+@startuml
+left to right direction
+
+actor "Estudantes" as estudantes
+actor "Público geral" as academicos
+actor "Professor" as professor
+actor "Portal Acadêmico do MEC" as pamec
+
+rectangle "Sistema SmartBiblio"{
+    usecase "Buscar livros" as buscar
+    usecase "Registrar retirada" as retirada
+    usecase "Quitar valores pendentes" as quitar
+    usecase "Entrar na fila de espera" as fila
+    usecase "Agendar cabine" as cabine
+    usecase "Indicar compra" as indicar
+    usecase "Alertar diretoria" as alertar
+    usecase "Comprovar matrícula" as comprovar
+    usecase "Obrigar comunicação do sistema com o portal" as comunicacao
+    usecase "Vasculhar histórico" as historico
+    usecase "Suspender conta do usuário" as suspender
+    usecase "Imprimir comprovante em papel" as imprimir
+}
+
+academicos -- buscar
+academicos -- retirada
+academicos -- quitar
+academicos -- fila
+
+estudantes -- academicos
+estudantes -- cabine
+
+professor -- academicos
+professor -- indicar
+
+indicar -- alertar
+
+@enduml

@@ -1,0 +1,34 @@
+'@startuml e @enduml são delimiatdores'
+
+@startuml 
+
+actor "usuário" as usr
+actor "aluno" as al
+actor "professor" as prof
+
+rectangle "Sistema de biblioteca"{
+usecase "retirar livro" as retirar
+usecase "cadastrar usuário" as cadastrar
+usecase "efetuar login" as login
+}
+
+'associação simples'
+' ..> É a seta do Extends e Include'
+cadastrar ..> retirar : <<extends>>
+
+retirar ..> login : <<include>>
+
+'pode usar up, down, left ou right entre os dois pontos do ..>' 
+'OBS: serve para organização'
+'Exemplo: retirar .up.> login : <<include>>'
+
+'pode usar mais de 2 pontos no ..> também'
+'exemplo: retirar .....> login : <<include>>'
+
+' --|> é a seta de herança'
+al --|> usr
+prof --|> usr
+
+usr -- retirar
+
+@enduml

@@ -1,0 +1,59 @@
+'Gabarito' 
+@startuml
+left to right direction
+
+actor "Comunidade Acadêmica" as User
+actor "Estudante" as Aluno
+actor "Professor" as Prof
+actor "Portal Acadêmico do MEC" as MEC
+
+
+Aluno -up-|> User
+Prof -up-|> User
+
+
+rectangle "Sistema SmartBiblio" {
+  usecase "Buscar Livro" as UC1
+  usecase "Registrar Retirada" as UC2
+  usecase "Quitar Valores Pendentes" as UC3
+  usecase "Agendar Cabine" as UC4
+  usecase "Indicar Compra de Título" as UC5
+  usecase "Comprovar Matrícula Ativa" as UC6
+  usecase "Buscar Histórico" as UC7
+  usecase "Entrar na Fila de Espera" as UC8
+  usecase "Alertar Diretoria de Ensino" as UC9
+  usecase "Suspender Conta" as UC10
+  usecase "Imprimir Comprovante" as UC11
+
+  ' Associações Atores -> Casos de Uso Principais
+  User -- UC1
+  User -- UC2
+  User -- UC3
+
+  Aluno -- UC4
+
+  Prof -- UC5
+
+  MEC -- UC6
+
+  ' Includes (Obrigatórios) - Seta vai do Base para o Incluído
+  UC2 ..> UC6 : <<include>>
+  UC4 ..> UC6 : <<include>>
+  UC5 ..> UC6 : <<include>>
+
+  UC2 ..> UC7 : <<include>>
+  UC4 ..> UC7 : <<include>>
+
+  ' Extends (Opcionais) - Seta vai da Extensão para o Base
+  UC8 .up.> UC1 : <<extend>>
+
+  UC9 .up.> UC5 : <<extend>>
+
+  UC10 .up.> UC7 : <<extend>>
+
+  UC11 .up.> UC2 : <<extend>>
+
+  UC11 .up.> UC3 : <<extend>>
+}
+
+@enduml

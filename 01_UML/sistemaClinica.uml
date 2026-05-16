@@ -1,0 +1,49 @@
+@startuml
+
+left to right direction 
+
+'Criando atores'
+actor "Paciente" as paciente
+actor "Recepicionista" as recepicionista
+actor "Médico" as medico
+actor "Sitema de cobrança" as sistema
+
+rectangle "Sistema de clínica"{
+  usecase "Agendar consulta" as agendar
+  usecase "Cancelar consulta" as cancelar
+  usecase "Pagar consulta" as pagar
+
+  usecase "Cadastrar paciente" as cadastrar
+  usecase "Confirmar presença" as confirmar
+  usecase "Gerar relatórios" as relatorios
+
+  usecase "Consultar histórico" as historico
+  usecase "Registrar atendimento" as atendimento
+  usecase "Emitir receita médica" as receita
+
+  usecase "Processar pagamento" as processarPGTO
+}
+
+'Associações'
+paciente -- agendar
+paciente -- cancelar
+paciente -- pagar
+
+recepicionista -- agendar
+recepicionista -- cancelar
+recepicionista -- cadastrar
+recepicionista -- confirmar
+recepicionista -- relatorios
+
+'medico -- historico
+medico -- atendimento
+'medico -- receita
+
+sistema -- processarPGTO
+
+'Associações avançadas'
+receita ..> atendimento : <<extends>>
+historico ..> atendimento : <<extends>>
+pagar ..> processarPGTO : <<include>>
+
+@enduml
