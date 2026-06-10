@@ -1,0 +1,80 @@
+@startuml
+    left to right direction
+    actor "Jogador" as usr
+    actor "Lider da Velvet Room" as lider
+    actor "Assistente da Velvet Room" as assistente
+    actor "Demonio" as demonios
+    
+    usr --|> demonios
+
+    rectangle "Demon Compendium"{
+        usecase "Entrar na Velvet Room" as UC1
+        usecase "Escolher fundir novos demônios" as UC2
+        usecase "Escolher compêndio demoníaco" as UC3
+
+        usecase "Escolher fusão normal" as UC4
+        usecase "Fundir fusão normal" as UC5
+        
+        usecase "Escolher fusão triângulo" as UC6
+        usecase "Fundir via fusão triângulo" as UC7
+        
+        usecase "Escolher fusão cruz" as UC8
+        usecase "Fundir via fusão cruz" as UC9
+        
+        usecase "Escolher fusão pentágono" as UC10
+        usecase "Fundir via fusão pentágono" as UC11
+        
+        usecase "Escolher fusão hexágono" as UC12
+        usecase "Fundir via fusão hexágono" as UC13
+        
+        usecase "Escolher registrar o status de um demônio" as UC14
+        usecase "Registrar status de um demônio" as UC15
+        
+        usecase "Escolher invocar demônio" as UC16
+        usecase "Invocar demônio" as UC17
+
+        usecase "Escolher atualizar o status de um demônio" as UC18
+        usecase "Atualizar status de um demônio" as UC19
+    }
+
+    'Casos de uso do jogador'
+    usr -- UC1
+    usr -- UC2
+    usr -- UC3
+
+    'Casos de uso caso o jogador escolha a UC2'
+    lider ..> UC2 : <<include>>
+    UC4 ..> UC2 : <<extends>>
+    usr -- UC4
+    lider ..> UC5 : <<include>>
+
+    UC6 ..> UC2 : <<extends>> 
+    usr -- UC6
+    lider ..> UC7 : <<include>>
+    
+    UC8 ..> UC2 : <<extends>> 
+    usr -- UC8
+    lider ..> UC9 : <<include>>
+    
+    UC10 ..> UC2 : <<extends>> 
+    usr -- UC10
+    lider ..> UC11 : <<include>>
+    
+    UC12 ..> UC2 : <<extends>> 
+    usr -- UC12
+    lider ..> UC13 : <<include>>
+
+    'Casos de uso caso o jogador escolha a UC3'
+    assistente ..> UC3 : <<include>>
+    UC14 ..> UC3 : <<extends>>
+    usr -- UC14
+    assistente ..> UC15 : <<include>>
+
+    UC16 ..> UC3 : <<extends>>
+    usr -- UC16
+    assistente ..> UC17 : <<include>>
+    
+    UC18 ..> UC3 : <<extends>>
+    usr -- UC18
+    assistente ..> UC19 : <<include>>
+@endum

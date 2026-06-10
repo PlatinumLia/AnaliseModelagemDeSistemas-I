@@ -7,9 +7,9 @@ actor "aluno" as al
 actor "professor" as prof
 
 rectangle "Sistema de biblioteca"{
-usecase "retirar livro" as retirar
-usecase "cadastrar usuário" as cadastrar
-usecase "efetuar login" as login
+    usecase "retirar livro" as retirar
+    usecase "cadastrar usuário" as cadastrar
+    usecase "efetuar login" as login
 }
 
 'associação simples'
