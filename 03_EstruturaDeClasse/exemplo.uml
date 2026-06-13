@@ -1,0 +1,31 @@
+interface Clicavel{
+  +aoclicar(e: Evento):acao
+  +aoclicar2x(e: Evento):acao
+}
+
+abstract class Veiculo{
+  -id:int
+  #nome:String
+  #marca:String
+  +fabricacao:Date
+  
+  +calcularIdade(fabricacao:Date):int
+}
+
+class Automovel{
+  -placa:String
+  +abastecer(c:Combustivel):void
+}
+
+class Motorista{
+    'atributos e métodos'
+}
+
+'Herança'
+Automovel -up-|> Veiculo
+
+'Agregação'
+Automovel"1..*" o-- "0..*"Motorista:dirige
+
+'Implementação da interface'
+Motorista ..|> Clicavel
